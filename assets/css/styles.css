@@ -807,7 +807,6 @@ body.is-loaded .hero [data-hero="4"]{ transition-delay: 320ms; }
   display:block;
   width: 100%;
   height: 320px;
-  filter: grayscale(100%) contrast(1.05) brightness(.98);
 }
 
 /* Responsive map height */
@@ -850,3 +849,187 @@ body.is-loaded .hero [data-hero="4"]{ transition-delay: 320ms; }
   visibility: hidden;
   pointer-events: none;
 }
+
+/* =========================
+   FEATURED YOUTUBE VIDEO
+   ========================= */
+
+   .featured-video {
+    margin: 10px 0;
+  }
+  
+  .featured-video__head {
+    margin-bottom: 20px;
+    max-width: 760px;
+  }
+  
+  .featured-video__eyebrow {
+    display: inline-block;
+    margin-bottom: 8px;
+  
+    color: #d71920;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  
+  /* Clickable video area */
+  .featured-video__link {
+    display: block;
+    width: 100%;
+    color: inherit;
+    text-decoration: none;
+    border-radius: 22px;
+  
+    transition:
+      transform 180ms ease,
+      box-shadow 180ms ease;
+  }
+  
+  .featured-video__image {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+  
+    overflow: hidden;
+    border-radius: 22px;
+    background: #111;
+  
+    box-shadow:
+      0 16px 40px rgba(0, 0, 0, 0.12);
+  }
+  
+  .featured-video__image img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+  
+    transition:
+      transform 350ms ease,
+      filter 350ms ease;
+  }
+  
+  /* Subtle dark gradient makes play button readable */
+  .featured-video__image::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+  
+    background:
+      linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.02) 45%,
+        rgba(0, 0, 0, 0.42) 100%
+      );
+  
+    pointer-events: none;
+  }
+  
+  /* Play / watch area */
+  .featured-video__overlay {
+    position: absolute;
+    left: 24px;
+    bottom: 24px;
+    z-index: 2;
+  
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .featured-video__play {
+    width: 58px;
+    height: 58px;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    border-radius: 50%;
+  
+    color: #fff;
+    background: #d71920;
+  
+    box-shadow:
+      0 8px 24px rgba(0, 0, 0, 0.25);
+  
+    transition:
+      transform 180ms ease,
+      background 180ms ease;
+  }
+  
+  .featured-video__watch {
+    padding: 10px 15px;
+  
+    border-radius: 999px;
+  
+    color: #fff;
+    background: rgba(17, 17, 17, 0.76);
+    backdrop-filter: blur(8px);
+  
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  
+  /* Hover */
+  .featured-video__link:hover {
+    transform: translateY(-3px);
+  
+    box-shadow:
+      0 20px 45px rgba(0, 0, 0, 0.08);
+  }
+  
+  .featured-video__link:hover img {
+    transform: scale(1.025);
+    filter: brightness(0.92);
+  }
+  
+  .featured-video__link:hover .featured-video__play {
+    transform: scale(1.08);
+  }
+  
+  /* Keyboard accessibility */
+  .featured-video__link:focus-visible {
+    outline: 3px solid #111;
+    outline-offset: 5px;
+  }
+  
+  /* Mobile */
+  @media (max-width: 640px) {
+    .featured-video__image {
+      border-radius: 16px;
+    }
+  
+    .featured-video__overlay {
+      left: 16px;
+      bottom: 16px;
+    }
+  
+    .featured-video__play {
+      width: 48px;
+      height: 48px;
+    }
+  
+    .featured-video__watch {
+      font-size: 0.72rem;
+    }
+  }
+  
+  /* Respect reduced-motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    .featured-video__link,
+    .featured-video__image img,
+    .featured-video__play {
+      transition: none;
+    }
+  
+    .featured-video__link:hover,
+    .featured-video__link:hover img,
+    .featured-video__link:hover .featured-video__play {
+      transform: none;
+    }
+  }
